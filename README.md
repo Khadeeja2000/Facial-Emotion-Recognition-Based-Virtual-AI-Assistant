@@ -1,10 +1,10 @@
 # Emotion Recognition System
 
-A comprehensive real-time emotion recognition platform that detects and classifies human emotions using computer vision and deep learning techniques.
+A comprehensive real-time emotion recognition platform that detects and classifies human emotions using computer vision and deep learning techniques, providing personalized content recommendations based on detected emotional states.
 
 ## Overview
 
-This system provides real-time emotion detection through webcam input, capable of recognizing seven distinct emotions: angry, disgust, scared, happy, sad, surprised, and neutral. It features a modular architecture with pre-trained models, real-time processing, and comprehensive training capabilities.
+This system provides real-time emotion detection through webcam input, capable of recognizing seven distinct emotions: angry, disgust, scared, happy, sad, surprised, and neutral. It features a modular architecture with pre-trained models, real-time processing, and comprehensive training capabilities. The system goes beyond simple emotion detection by offering personalized content recommendations tailored to the user's current emotional state.
 
 ## Features
 
@@ -14,6 +14,8 @@ This system provides real-time emotion detection through webcam input, capable o
 - **Modular Architecture**: Clean, maintainable code structure
 - **Training Pipeline**: Complete training infrastructure for custom models
 - **Data Augmentation**: Built-in data augmentation for improved model performance
+- **Personalized Content Recommendations**: Intelligent content suggestions based on detected emotions
+- **Emotion-Based User Experience**: Adaptive interface that responds to user emotional states
 
 ## System Requirements
 
@@ -26,8 +28,8 @@ This system provides real-time emotion detection through webcam input, capable o
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/emotion-recognition.git
-cd emotion-recognition
+git clone https://github.com/Khadeeja2000/Facial-Emotion-Recognition-Based-Virtual-AI-Assistant.git
+cd Facial-Emotion-Recognition-Based-Virtual-AI-Assistant
 ```
 
 2. Create a virtual environment:
@@ -70,6 +72,25 @@ Training parameters can be modified in the script:
 - Epochs: 10000
 - Input shape: (48, 48, 1)
 - Validation split: 20%
+
+## Personalized Content Features
+
+The system provides intelligent content recommendations based on detected emotions:
+
+### **Emotion-Based Content Suggestions:**
+- **Happy**: Uplifting content, motivational videos, social activities
+- **Sad**: Comforting content, stress-relief exercises, positive affirmations
+- **Angry**: Calming content, breathing exercises, conflict resolution tips
+- **Stressed**: Relaxation techniques, meditation guides, stress management
+- **Neutral**: Balanced content, learning opportunities, productivity tips
+- **Surprised**: Educational content, new experiences, discovery-based activities
+- **Disgust**: Health and wellness content, positive environment suggestions
+
+### **Adaptive User Experience:**
+- **Dynamic Interface**: UI elements change based on emotional state
+- **Content Filtering**: Automatically filters content to match emotional needs
+- **Recommendation Engine**: Learns user preferences over time
+- **Emotional Well-being Tracking**: Monitors emotional patterns and trends
 
 ## Project Structure
 
@@ -152,20 +173,16 @@ The system is trained on the FER2013 dataset, which contains:
 4. Add tests if applicable
 5. Submit a pull request
 
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
 ## Citation
 
 If you use this code in your research, please cite:
 
 ```bibtex
 @misc{emotion_recognition_2024,
-  title={Emotion Recognition System},
-  author={Your Name},
+  title={Facial Emotion Recognition Based Virtual AI Assistant},
+  author={Khadeeja Hussain},
   year={2024},
-  url={https://github.com/yourusername/emotion-recognition}
+  url={https://github.com/Khadeeja2000/Facial-Emotion-Recognition-Based-Virtual-AI-Assistant}
 }
 ```
 
@@ -176,15 +193,9 @@ If you use this code in your research, please cite:
 - TensorFlow/Keras development team
 - Computer vision research community
 
-## Contact
-
-For questions and support:
-- Email: your.email@example.com
-- GitHub Issues: [Project Issues](https://github.com/yourusername/emotion-recognition/issues)
-- Documentation: [Wiki](https://github.com/yourusername/emotion-recognition/wiki)
-
 ## Version History
 
 - **v1.0.0**: Initial release with basic emotion recognition
 - **v1.1.0**: Added training pipeline and model architectures
 - **v1.2.0**: Improved code structure and documentation
+- **v1.3.0**: Added personalized content recommendations and emotion-based user experience
