@@ -1,4 +1,4 @@
-# Core dependencies for Emotion Recognition System
+# Core dependencies for Enhanced Emotion Recognition System
 opencv-python==4.8.1.78
 numpy==1.24.3
 pandas==2.0.3
@@ -9,8 +9,14 @@ imutils==0.5.4
 tensorflow==2.13.0
 keras==2.13.1
 
-# Image processing
+# Image processing and computer vision
 Pillow==10.0.0
+matplotlib==3.7.2
+seaborn==0.12.2
+
+# AI and machine learning enhancements
+requests==2.31.0
+scipy==1.11.1
 
 # Development and testing
 pytest==7.4.0
@@ -19,3 +25,7 @@ flake8==6.0.0
 
 # Optional: GPU support (uncomment if using GPU)
 # tensorflow-gpu==2.13.0
+
+# Optional: Advanced visualization
+# plotly==5.15.0
+# bokeh==3.2.2
