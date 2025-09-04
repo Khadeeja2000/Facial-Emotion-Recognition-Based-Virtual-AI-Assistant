@@ -35,7 +35,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install --upgrade flake8 pytest
         # Minimal libs required by tests (no TensorFlow to keep CI light and compatible)
-        pip install numpy pandas opencv-python imutils pillow
+        pip install numpy pandas opencv-python-headless imutils pillow
     
     - name: Lint with flake8
       run: |
