@@ -8,7 +8,7 @@ This repository contains multiple implementations of facial emotion recognition 
 
 ## Repository Structure
 
-### 🌟 Main Branches
+###  Main Branches
 
 #### 1. **FER2013 Emotion Detection** (`fer2013-emotion-detection`)
 **Pure emotion recognition system with 77% accuracy**
@@ -88,11 +88,6 @@ python fer_ravdess_integrated_system.py  # Run complete system
 3. **Evidence-based Analysis**: Transparent explanations for all predictions
 4. **Professional Interface**: Therapeutic intervention system
 
-### Academic Value
-- Demonstrates systematic approach to emotion-mental health mapping
-- Implements research-grade training pipeline
-- Documents limitations and methodological considerations
-- Provides foundation for clinical validation studies
 
 ## System Architecture
 
@@ -109,7 +104,6 @@ Evidence-based Analysis → Virtual AI Assistant → Therapeutic Interventions
 | RAVDESS Mental Health Models | 100%* | <50ms | ~300MB |
 | Complete Integrated System | Combined | <50ms/frame | ~500MB |
 
-*Note: 100% accuracy may indicate overfitting - see documentation for details
 
 ## Installation Requirements
 
@@ -130,20 +124,6 @@ pip install pandas==2.0.0
 pip install numpy==1.24.0
 ```
 
-## Ethical Considerations
-
-- **Not for Clinical Diagnosis**: Screening and wellness tool only
-- **Privacy**: Facial data processed locally, not stored
-- **Disclaimers**: Clear limitations documentation
-- **Professional Help**: Encourages seeking professional mental health support
-
-## Limitations
-
-### Methodological
-- Emotion-mental health correlations based on research approximations
-- Single-modal input (facial expressions only)
-- No temporal persistence analysis
-- Not validated on clinical populations
 
 ### Technical
 - Requires good lighting conditions
@@ -151,13 +131,6 @@ pip install numpy==1.24.0
 - Static correlations (no personalization)
 - Internet required for therapeutic content
 
-## Future Work
-
-- Clinical validation with patient populations
-- Multi-modal fusion (facial + voice + physiological)
-- Temporal pattern analysis for emotion persistence
-- Personalization algorithms for individual differences
-- Integration with validated clinical assessment scales
 
 ## Documentation
 
@@ -166,9 +139,6 @@ Each branch contains detailed documentation:
 - **Complete System Branch**: Full pipeline documentation with performance metrics
 - **Individual Files**: Inline documentation and comments
 
-## License
-
-See LICENSE file for details.
 
 ## Citation
 
@@ -197,9 +167,6 @@ RAVDESS Dataset:
 }
 ```
 
-## Contact
-
-For technical questions or research collaboration, please refer to the individual branch documentation and issue tracking system.
 
 ---
 
