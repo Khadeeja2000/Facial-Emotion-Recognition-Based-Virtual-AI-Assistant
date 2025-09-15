@@ -18,6 +18,12 @@ seaborn==0.12.2
 requests==2.31.0
 scipy==1.11.1
 
+# Enhanced facial analysis for mental health
+mediapipe==0.10.7
+
+# Audio and video processing for therapeutic content
+pygame==2.5.2
+
 # Development and testing
 pytest==7.4.0
 black==23.7.0

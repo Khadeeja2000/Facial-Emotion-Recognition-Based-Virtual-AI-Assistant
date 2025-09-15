@@ -7,6 +7,7 @@ It detects faces, classifies emotions, and displays results in real-time.
 
 import cv2
 import numpy as np
+import tensorflow as tf
 from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.models import load_model
 import imutils
@@ -23,6 +24,7 @@ BAR_HEIGHT = 28
 BAR_SPACING = 36
 LEFT_MARGIN = 20
 TOP_MARGIN = 20
+DETECTION_TIME_SECONDS = 60  # set to 120 for 2 minutes
 
 # Emotion labels
 EMOTIONS = ["angry", "disgust", "scared", "happy", "sad", "surprised", "neutral"]
@@ -172,6 +174,61 @@ def draw_face_detection(frame, face_coords, emotion_label):
     # Draw face bounding box (green)
     cv2.rectangle(frame, (fX, fY), (fX + fW, fY + fH), (0, 200, 0), 2)
 
+# --- Summary window ---
+def show_session_summary(emotion_counts: dict, detections_made: int, duration_s: int) -> None:
+    """Display a visual summary window with counts and percentages.
+
+    Press 'q', 'ESC', or 'Enter' to close.
+    """
+    width, height = 760, 520
+    canvas = np.zeros((height, width, 3), dtype=np.uint8)
+    canvas[:] = (20, 20, 20)
+
+    # Title and header
+    cv2.putText(canvas, "Session Summary", (30, 50), cv2.FONT_HERSHEY_DUPLEX, 1.1, (255, 255, 255), 2, cv2.LINE_AA)
+    cv2.putText(canvas, f"Duration: {duration_s}s", (30, 85), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (200, 200, 200), 1, cv2.LINE_AA)
+    cv2.putText(canvas, f"Frames with detected face: {detections_made}", (30, 110), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (200, 200, 200), 1, cv2.LINE_AA)
+
+    # Bars
+    left = 30
+    top = 150
+    bar_h = 26
+    gap = 34
+    max_w = width - left - 60
+
+    if detections_made <= 0:
+        cv2.putText(canvas, "No face detections.", (left, top), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (180, 180, 180), 2, cv2.LINE_AA)
+    else:
+        for idx, emotion in enumerate(EMOTIONS):
+            count = int(emotion_counts.get(emotion, 0))
+            pct = (count / detections_made) * 100.0
+            y = top + idx * gap
+
+            # Track background
+            cv2.rectangle(canvas, (left, y), (left + max_w, y + bar_h), (55, 55, 55), -1)
+
+            # Filled bar by percentage
+            fill_w = int(max_w * (pct / 100.0))
+            color = EMOTION_COLORS.get(emotion, (160, 160, 160))
+            cv2.rectangle(canvas, (left, y), (left + fill_w, y + bar_h), color, -1)
+            cv2.rectangle(canvas, (left, y), (left + max_w, y + bar_h), (90, 90, 90), 1)
+
+            label = f"{emotion}: {count} ({pct:.2f}%)"
+            cv2.putText(canvas, label, (left + 8, y + int(bar_h*0.75)), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (240, 240, 240), 1, cv2.LINE_AA)
+
+    # Footer instructions
+    cv2.putText(canvas, "Press q / ESC / Enter to close", (30, height - 20), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (180, 180, 180), 1, cv2.LINE_AA)
+
+    cv2.namedWindow('Session Summary', cv2.WINDOW_NORMAL)
+    cv2.resizeWindow('Session Summary', width, height)
+    cv2.moveWindow('Session Summary', 120, 120)
+    while True:
+        cv2.imshow('Session Summary', canvas)
+        key = cv2.waitKey(50) & 0xFF
+        if key in (ord('q'), 27, 13):  # q, ESC, Enter
+            break
+    cv2.destroyWindow('Session Summary')
+
 def main():
     """Main function for real-time emotion recognition."""
     # Initialize models
@@ -184,7 +241,7 @@ def main():
     if camera is None:
         vs = open_videostream()
         if vs is None:
-            print("❌ Could not open camera. On macOS, grant camera access in System Settings > Privacy & Security > Camera to your terminal/app. Close apps using the camera and try again.")
+            print("Could not open camera. On macOS, grant camera access in System Settings > Privacy & Security > Camera to your terminal/app. Close apps using the camera and try again.")
             return
         use_videostream = True
 
@@ -198,10 +255,17 @@ def main():
     cv2.moveWindow('Emotion Probabilities', 1000, 80)
 
     print("Starting emotion recognition system...")
-    print("Press 'q' to quit")
+    print(f"Session length: {DETECTION_TIME_SECONDS} seconds (press 'q' to quit early)")
 
     try:
+        # Counters for summary
+        emotion_counts = {e: 0 for e in EMOTIONS}
+        detections_made = 0  # frames where a face was detected and classified
+        start_time = time.time()
         while True:
+            # Stop when time elapses
+            if time.time() - start_time >= DETECTION_TIME_SECONDS:
+                break
             # Capture frame
             if use_videostream:
                 frame = vs.read()
@@ -234,13 +298,18 @@ def main():
 
                 # Predict emotions
                 predictions = emotion_classifier.predict(roi, verbose=0)[0]
-                emotion_label = EMOTIONS[predictions.argmax()]
+                top_idx = int(np.argmax(predictions))
+                emotion_label = EMOTIONS[top_idx]
 
                 # Draw emotion bars
                 draw_emotion_bars(canvas, predictions)
 
                 # Draw face detection
                 draw_face_detection(frame_clone, faces, emotion_label)
+
+                # Update counters
+                detections_made += 1
+                emotion_counts[emotion_label] += 1
             else:
                 # Still render empty bar panel (zeros) for consistent UI
                 draw_emotion_bars(canvas, np.zeros(len(EMOTIONS), dtype=np.float32))
@@ -263,6 +332,25 @@ def main():
             camera.release()
         cv2.destroyAllWindows()
         print("System shutdown complete")
+
+    # Print session summary
+    print("\n========== Session Summary ==========")
+    print(f"Duration target: {DETECTION_TIME_SECONDS} seconds")
+    print(f"Frames with detected face: {detections_made}")
+    if detections_made == 0:
+        print("No face detections during the session.")
+        # Also show empty visual summary window
+        show_session_summary(emotion_counts, detections_made, DETECTION_TIME_SECONDS)
+        return
+    print("\nEmotion counts and percentages (of detected frames):")
+    for emotion in EMOTIONS:
+        count = emotion_counts[emotion]
+        pct = (count / detections_made) * 100.0
+        print(f"- {emotion}: {count} ({pct:.2f}%)")
+    print("====================================\n")
+
+    # Visual summary window
+    show_session_summary(emotion_counts, detections_made, DETECTION_TIME_SECONDS)
 
 if __name__ == "__main__":
     main()
