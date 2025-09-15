@@ -2,15 +2,22 @@
 
 A comprehensive research project implementing real-time facial emotion recognition integrated with mental health assessment and therapeutic intervention capabilities.
 
-## Project Overview
+## Repository Overview
 
 This repository contains multiple implementations of facial emotion recognition systems, ranging from basic emotion detection to complete mental health assessment with virtual AI assistant integration.
 
 ## Repository Structure
 
-###  Main Branches
+### 🌟 Main Branches
 
-#### 1. **FER2013 Emotion Detection** (`fer2013-emotion-detection`)
+#### 1. **Main Branch** (`main`)
+**Clean repository overview and navigation**
+
+- **Purpose**: Repository overview and branch navigation
+- **Content**: Documentation for all branches and components
+- **Files**: Core documentation and navigation files only
+
+#### 2. **FER2013 Emotion Detection** (`fer2013-emotion-detection`)
 **Pure emotion recognition system with 77% accuracy**
 
 - **Features**: Real-time 7-emotion detection (angry, disgust, scared, happy, sad, surprised, neutral)
@@ -18,12 +25,7 @@ This repository contains multiple implementations of facial emotion recognition 
 - **Performance**: 77% accuracy, 30+ FPS real-time processing
 - **Use Case**: Basic emotion recognition for research and development
 
-**Key Files:**
-- `real_time_video.py` - Main real-time emotion detection
-- `train_emotion_classifier.py` - Model training pipeline
-- `models/_mini_XCEPTION.102-0.66.hdf5` - Pre-trained model
-
-#### 2. **Complete Integrated System** (`complete-integrated-system`)
+#### 3. **Complete Integrated System** (`complete-integrated-system`)
 **Full mental health assessment with virtual AI assistant**
 
 - **Features**: FER2013 emotions + RAVDESS mental health models + therapeutic interventions
@@ -31,13 +33,7 @@ This repository contains multiple implementations of facial emotion recognition 
 - **Interface**: Professional popup with clickable therapeutic content
 - **Use Case**: Complete mental health screening and intervention system
 
-**Key Files:**
-- `fer_ravdess_integrated_system.py` - Complete integrated system
-- `ravdess_mental_health_trainer.py` - Mental health model training
-- `trained_models/` - RAVDESS-trained models
-- `datasets/` - Training datasets
-
-#### 3. **Legacy Branches**
+#### 4. **Legacy Branches**
 - `fer-77-live` - Original working FER2013 implementation
 - `Addition-of-more-features` - Development branch with experimental features
 
@@ -88,6 +84,11 @@ python fer_ravdess_integrated_system.py  # Run complete system
 3. **Evidence-based Analysis**: Transparent explanations for all predictions
 4. **Professional Interface**: Therapeutic intervention system
 
+### Academic Value
+- Demonstrates systematic approach to emotion-mental health mapping
+- Implements research-grade training pipeline
+- Documents limitations and methodological considerations
+- Provides foundation for clinical validation studies
 
 ## System Architecture
 
@@ -104,6 +105,7 @@ Evidence-based Analysis → Virtual AI Assistant → Therapeutic Interventions
 | RAVDESS Mental Health Models | 100%* | <50ms | ~300MB |
 | Complete Integrated System | Combined | <50ms/frame | ~500MB |
 
+*Note: 100% accuracy may indicate overfitting - see documentation for details
 
 ## Installation Requirements
 
@@ -124,6 +126,20 @@ pip install pandas==2.0.0
 pip install numpy==1.24.0
 ```
 
+## Ethical Considerations
+
+- **Not for Clinical Diagnosis**: Screening and wellness tool only
+- **Privacy**: Facial data processed locally, not stored
+- **Disclaimers**: Clear limitations documentation
+- **Professional Help**: Encourages seeking professional mental health support
+
+## Limitations
+
+### Methodological
+- Emotion-mental health correlations based on research approximations
+- Single-modal input (facial expressions only)
+- No temporal persistence analysis
+- Not validated on clinical populations
 
 ### Technical
 - Requires good lighting conditions
@@ -131,6 +147,13 @@ pip install numpy==1.24.0
 - Static correlations (no personalization)
 - Internet required for therapeutic content
 
+## Future Work
+
+- Clinical validation with patient populations
+- Multi-modal fusion (facial + voice + physiological)
+- Temporal pattern analysis for emotion persistence
+- Personalization algorithms for individual differences
+- Integration with validated clinical assessment scales
 
 ## Documentation
 
@@ -138,7 +161,6 @@ Each branch contains detailed documentation:
 - **FER2013 Branch**: Emotion detection technical specifications
 - **Complete System Branch**: Full pipeline documentation with performance metrics
 - **Individual Files**: Inline documentation and comments
-
 
 ## Citation
 
@@ -167,6 +189,9 @@ RAVDESS Dataset:
 }
 ```
 
+## Contact
+
+For technical questions or research collaboration, please refer to the individual branch documentation and issue tracking system.
 
 ---
 
