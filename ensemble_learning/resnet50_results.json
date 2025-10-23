@@ -1,0 +1,19 @@
+{
+  "resnet50_results": {
+    "test_accuracy": 0.31930899972137083,
+    "training_epochs": 34,
+    "best_val_accuracy": 0.32009753584861755,
+    "final_train_accuracy": 0.33931294083595276,
+    "final_val_accuracy": 0.314698725938797,
+    "model_parameters": 24769927,
+    "emotion_classes": [
+      "Angry",
+      "Disgust",
+      "Fear",
+      "Happy",
+      "Sad",
+      "Surprise",
+      "Neutral"
+    ]
+  }
+}

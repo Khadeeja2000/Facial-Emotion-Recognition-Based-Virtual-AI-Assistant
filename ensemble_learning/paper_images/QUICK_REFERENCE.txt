@@ -1,0 +1,129 @@
+═══════════════════════════════════════════════════════════════
+    RESEARCH PAPER IMAGES - QUICK REFERENCE GUIDE
+═══════════════════════════════════════════════════════════════
+
+📁 FOLDER LOCATION:
+   /Users/DELL/Documents/Emotion-recognition/ensemble_learning/paper_images/
+
+✅ ALL 11 FIGURES READY TO USE
+
+───────────────────────────────────────────────────────────────
+FIGURE CHECKLIST
+───────────────────────────────────────────────────────────────
+
+✓ FIGURE 1:  image1.png              - Dataset Distribution
+✓ FIGURE 2:  system_architecture.png - System Pipeline
+✓ FIGURE 3:  model_architectures.png - Model Comparison
+✓ FIGURE 4:  image9.png              - Performance Comparison
+✓ FIGURE 5:  image10.png             - Ensemble Benefits
+✓ FIGURE 6:  image11.png             - Per-Class Performance
+✓ FIGURE 7:  image12.png             - Confusion Matrix
+✓ FIGURE 8:  gradcam_visualization.png - Grad-CAM Maps
+✓ FIGURE 9:  image14.png             - SOTA Comparison
+✓ FIGURE 10: latency_breakdown.png   - Processing Time
+✓ FIGURE 11: user_study_results.png  - User Study
+
+───────────────────────────────────────────────────────────────
+WHERE TO INSERT EACH FIGURE
+───────────────────────────────────────────────────────────────
+
+SECTION 3: Dataset and Preprocessing
+    → FIGURE 1 (Dataset Distribution)
+
+SECTION 4: Methodology
+    4.1 → FIGURE 2 (System Architecture)
+    4.4 → FIGURE 3 (Model Architectures)
+
+SECTION 6: Results and Discussion
+    6.1 Overall Performance
+        → FIGURE 4 (Performance Comparison)
+        → FIGURE 5 (Ensemble Benefits)
+        
+    6.1 Per-Class Analysis (add subsection)
+        → FIGURE 6 (Per-Class Performance)
+        → FIGURE 7 (Confusion Matrix)
+        
+    6.2 Grad-CAM Analysis
+        → FIGURE 8 (Grad-CAM Visualizations)
+        
+    6.X Benchmark Comparison (add subsection)
+        → FIGURE 9 (SOTA Comparison)
+        
+    6.3 System Performance
+        → FIGURE 10 (Latency Breakdown)
+        → FIGURE 11 (User Study Results)
+
+───────────────────────────────────────────────────────────────
+LATEX SETUP
+───────────────────────────────────────────────────────────────
+
+1. Add to preamble (ALREADY IN YOUR TEMPLATE):
+   \graphicspath{{paper_images/}}
+
+2. Use standard figure syntax:
+   \begin{figure}[!t]
+   \centering
+   \includegraphics[width=\columnwidth]{filename.png}
+   \caption{Your caption here}
+   \label{fig:your-label}
+   \end{figure}
+
+3. For two-column figures (only Grad-CAM):
+   \begin{figure*}[!t]
+   ...
+   \end{figure*}
+
+───────────────────────────────────────────────────────────────
+YOUR RESULTS SUMMARY (FOR REFERENCE)
+───────────────────────────────────────────────────────────────
+
+INDIVIDUAL MODELS:
+  • Mini-XCEPTION:   68.41% accuracy
+  • MobileNetV2:     47.64% accuracy
+  • EfficientNetB0:  39.70% accuracy
+
+ENSEMBLE:
+  • Accuracy:        70.33% ✅ (+2.8% improvement)
+  • Macro F1:        57.71%
+  • Precision:       71.22%
+  • Recall:          55.74%
+
+SYSTEM PERFORMANCE:
+  • Total Latency:   82ms (CPU)
+  • Frame Rate:      12 FPS (CPU), 25 FPS (GPU)
+  • Processing:      Real-time capable
+
+COMPARISON:
+  • Khaireddin (2021): 73.2%
+  • Wang et al (2020): 71.8%
+  • Li et al (2020):   70.1%
+  • YOUR ENSEMBLE:     70.3% ← Competitive!
+  • Oguine (2022):     69.5%
+
+───────────────────────────────────────────────────────────────
+IMAGE SPECIFICATIONS
+───────────────────────────────────────────────────────────────
+
+✓ Resolution: 300 DPI (publication quality)
+✓ Format: PNG
+✓ Total Size: ~2.8 MB
+✓ Quality: IEEE standard
+✓ Ready to compile
+
+───────────────────────────────────────────────────────────────
+TROUBLESHOOTING
+───────────────────────────────────────────────────────────────
+
+If LaTeX can't find images:
+1. Check \graphicspath{{paper_images/}} in preamble
+2. Verify images are in paper_images/ folder
+3. Use relative path: paper_images/image1.png
+
+If you need to recreate images:
+1. cd /Users/DELL/Documents/Emotion-recognition/ensemble_learning
+2. python3 create_paper_images.py
+3. Images regenerated in paper_images/
+
+═══════════════════════════════════════════════════════════════
+    🎉 ALL IMAGES READY FOR YOUR PAPER!
+═══════════════════════════════════════════════════════════════

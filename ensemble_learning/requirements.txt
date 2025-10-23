@@ -1,0 +1,23 @@
+# Ensemble Learning Requirements for Emotion Recognition
+
+# Core ML/AI Libraries
+tensorflow>=2.10.0
+keras>=2.10.0
+scikit-learn>=1.1.0
+numpy>=1.21.0
+pandas>=1.4.0
+
+# Computer Vision
+opencv-python>=4.6.0
+Pillow>=9.0.0
+
+# Visualization
+matplotlib>=3.5.0
+seaborn>=0.11.0
+
+# Progress and Utilities
+tqdm>=4.64.0
+pathlib2>=2.3.0
+
+# Optional: For enhanced visualization
+plotly>=5.0.0

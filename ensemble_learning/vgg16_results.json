@@ -1,0 +1,19 @@
+{
+  "vgg16_results": {
+    "test_accuracy": 0.4803566453050989,
+    "training_epochs": 24,
+    "best_val_accuracy": 0.4898989796638489,
+    "final_train_accuracy": 0.9966038465499878,
+    "final_val_accuracy": 0.4806687533855438,
+    "model_parameters": 15110471,
+    "emotion_classes": [
+      "Angry",
+      "Disgust",
+      "Fear",
+      "Happy",
+      "Sad",
+      "Surprise",
+      "Neutral"
+    ]
+  }
+}

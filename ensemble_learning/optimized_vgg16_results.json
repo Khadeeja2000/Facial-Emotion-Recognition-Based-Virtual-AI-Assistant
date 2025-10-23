@@ -1,0 +1,17 @@
+{
+  "optimized_vgg16_results": {
+    "test_accuracy": 0.24714405126776262,
+    "training_epochs": 11,
+    "best_val_accuracy": 0.2513061761856079,
+    "final_train_accuracy": 0.2305481731891632,
+    "final_val_accuracy": 0.2513061761856079,
+    "model_parameters": 15145543,
+    "improvements": {
+      "more_frozen_layers": true,
+      "higher_dropout": true,
+      "batch_normalization": true,
+      "enhanced_augmentation": true,
+      "fewer_epochs": true
+    }
+  }
+}
